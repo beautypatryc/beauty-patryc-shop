@@ -13,7 +13,7 @@ export const productos = [
         id: 2, 
         nombre: "Kit Manzanilla", 
         precio: 55000, 
-        img: "assets/Kit.png",
+        img: "assets/Kit_manzanilla.png",
         ingredientes: "Shampoo de Manzanilla, Acondicionador y Tratamiento Capilar(Crema de Peinar).",
         aplicacion: "Aplicar el shampoo sobre el cabello húmedo, masajear el cuero cabelludo entre 5 y 15 minutos y enjuagar, luego aplicar acondicionador y tratamiento capilar.",
         duracion: "Aproximadamente 6 meses"
