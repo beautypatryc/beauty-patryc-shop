@@ -438,10 +438,23 @@ body {
     letter-spacing: 2px;
 }
 
-/* Ajuste Responsivo para Smartphones - Modal */
+/* Ajuste Responsivo para Smartphones - Modal con Scrolling Interno */
 @media (max-width: 768px) {
-    .modal-contenido { justify-content: center; width: 95%; }
-    .modal-cuerpo { flex-direction: column; }
+    .modal-contenido { 
+        justify-content: center; 
+        width: 95%; 
+        max-height: 90vh; /* Limita la altura total a la pantalla del móvil */
+        padding: 1rem 0;
+    }
+    
+    .modal-cuerpo { 
+        flex-direction: column; 
+        max-height: 85vh;
+        overflow-y: auto; /* Permite hacer scroll en todo el cuerpo si es necesario */
+        background: var(--color-fondo-tarjeta);
+        border-radius: 15px;
+        padding-bottom: 1rem;
+    }
     
     .modal-imagen-flotante {
         position: relative;
@@ -449,33 +462,39 @@ body {
         left: auto;
         transform: none;
         width: 100%;
-        max-width: 280px;
-        height: auto;
-        margin: 0 auto 1rem auto; 
+        max-height: 220px; /* Altura controlada para que no monopolice la pantalla */
+        margin: 0 auto; 
         object-fit: contain;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        border-radius: 12px;
+        box-shadow: none;
+        border-radius: 12px 12px 0 0;
         display: block;
+        background-color: #f9f9f9;
     }
     
     .modal-info-caja {
         width: 100%;
-        padding: 2rem 1.5rem 1.5rem 1.5rem;
+        padding: 1.5rem 1.5rem 2rem 1.5rem;
         text-align: left;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        box-shadow: none;
+        /* Habilita un scroll suave interno si el texto es muy largo */
+        max-height: none; 
+        overflow-y: visible;
     }
     
-    .modal-separador { margin: 0 0 1.5rem 0; }
+    .modal-separador { margin: 0 0 1rem 0; }
     .modal-marca-agua { display: none; }
     
+    /* Botón de cerrar fijo o flotante bien visible en la esquina superior de la pantalla del modal */
     .btn-cerrar-modal {
-        top: 10px;
-        right: 10px;
-        width: 46px;
-        height: 46px;
+        position: fixed; /* Fijo para que siempre acompañe al usuario aunque haga scroll */
+        top: 25px;
+        right: 25px;
+        width: 44px;
+        height: 44px;
         background: #2C3E2D;
         color: #ffffff;
-        border: none;
-        box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        border: 2px solid #ffffff;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        z-index: 1000;
     }
 }
