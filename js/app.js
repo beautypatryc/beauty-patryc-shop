@@ -24,26 +24,28 @@ window.abrirDetalleProducto = (id) => {
     if (!prod) return;
 
     cuerpoModal.innerHTML = `
-        <img src="${prod.img}" alt="${prod.nombre}" class="modal-imagen-flotante">
-        <div class="modal-info-caja">
-            <button class="btn-cerrar-modal" onclick="cerrarModal()">✖</button>
-            
-            <div class="modal-categoria">Cuidado Capilar</div>
-            <h2>${prod.nombre}</h2>
-            <div class="modal-separador"></div>
-            
-            <p><strong>Fórmula:</strong> ${prod.ingredientes}</p>
-            <p><strong>Aplicación:</strong> ${prod.aplicacion}</p>
-            <p><strong>Rendimiento:</strong> ${prod.duracion}</p>
-            
-            <button class="btn-agregar-modal" onclick="agregarAlCarrito(${prod.id}); cerrarModal();">
-                Agregar al Carrito - ${formatoMoneda.format(prod.precio)}
-            </button>
-            
-            <div class="modal-marca-agua">BEAUTY</div>
+        <button class="btn-cerrar-modal" onclick="cerrarModal()">✖</button>
+        <div class="modal-cuerpo">
+            <img src="${prod.img}" alt="${prod.nombre}" class="modal-imagen-flotante">
+            <div class="modal-info-caja">
+                <div class="modal-categoria">Cuidado Capilar</div>
+                <h2>${prod.nombre}</h2>
+                <div class="modal-separador"></div>
+                
+                <p><strong>Fórmula:</strong> ${prod.ingredientes}</p>
+                <p><strong>Aplicación:</strong> ${prod.aplicacion}</p>
+                <p><strong>Rendimiento:</strong> ${prod.duracion}</p>
+                
+                <button class="btn-agregar-modal" onclick="agregarAlCarrito(${prod.id}); cerrarModal();">
+                    Agregar al Carrito - ${formatoMoneda.format(prod.precio)}
+                </button>
+                
+                <div class="modal-marca-agua">BEAUTY</div>
+            </div>
         </div>
     `;
     modalProducto.classList.add('activo');
+};
 };
 
 window.cerrarModal = () => {
