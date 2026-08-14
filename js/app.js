@@ -1,3 +1,4 @@
+// js/app.js
 import { productos } from './productos.js';
 
 let carrito = [];
@@ -45,7 +46,6 @@ window.abrirDetalleProducto = (id) => {
         </div>
     `;
     modalProducto.classList.add('activo');
-};
 };
 
 window.cerrarModal = () => {
@@ -132,7 +132,7 @@ inputNombre.addEventListener('input', (e) => {
 
 function validarFormulario() {
     const nombreTrim = inputNombre.value.trim();
-    const nombreCoherente = nombreTrim.length >= 8; // Mínimo 8 letras para ser válido
+    const nombreCoherente = nombreTrim.length >= 3; 
     const direccionValida = inputDireccion.value.trim() !== '';
     
     const esValido = nombreCoherente && direccionValida && carrito.length > 0;
