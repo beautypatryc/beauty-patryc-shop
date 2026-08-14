@@ -1,4 +1,3 @@
-// js/app.js
 import { productos } from './productos.js';
 
 let carrito = [];
@@ -131,7 +130,7 @@ inputNombre.addEventListener('input', (e) => {
 
 function validarFormulario() {
     const nombreTrim = inputNombre.value.trim();
-    const nombreCoherente = nombreTrim.length >= 3; // Mínimo 3 letras para ser válido
+    const nombreCoherente = nombreTrim.length >= 8; // Mínimo 8 letras para ser válido
     const direccionValida = inputDireccion.value.trim() !== '';
     
     const esValido = nombreCoherente && direccionValida && carrito.length > 0;
