@@ -438,70 +438,63 @@ body {
     letter-spacing: 2px;
 }
 
-/* Ajuste Responsivo para Smartphones - Modal con X sobre la imagen y tamaño optimizado */
+/* Ajuste Responsivo para Smartphones - Modal con Scrolling Interno */
 @media (max-width: 768px) {
     .modal-contenido { 
         justify-content: center; 
         width: 95%; 
-        max-height: 92vh; 
+        max-height: 90vh; /* Limita la altura total a la pantalla del móvil */
         padding: 1rem 0;
     }
     
     .modal-cuerpo { 
         flex-direction: column; 
-        max-height: 88vh;
-        overflow-y: auto; 
+        max-height: 85vh;
+        overflow-y: auto; /* Permite hacer scroll en todo el cuerpo si es necesario */
         background: var(--color-fondo-tarjeta);
-        border-radius: 16px;
-        padding-bottom: 1.5rem;
-        position: relative; /* Contenedor de referencia para la X flotante */
+        border-radius: 15px;
+        padding-bottom: 1rem;
     }
     
-    /* Contenedor relativo para la imagen para que la X flote exactamente sobre ella */
-    .modal-imagen-contenedor {
-        position: relative;
-        width: 100%;
-        padding: 15px 15px 0 15px; /* Margen para que la imagen no toque los bordes */
-    }
-
     .modal-imagen-flotante {
         position: relative;
         top: auto;
         left: auto;
         transform: none;
         width: 100%;
-        max-height: 280px; /* Imagen más grande, vistosa y proporcionada */
+        max-height: 220px; /* Altura controlada para que no monopolice la pantalla */
         margin: 0 auto; 
         object-fit: contain;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        border-radius: 12px;
+        box-shadow: none;
+        border-radius: 12px 12px 0 0;
         display: block;
         background-color: #f9f9f9;
     }
     
     .modal-info-caja {
         width: 100%;
-        padding: 1.5rem 1.5rem 1rem 1.5rem;
+        padding: 1.5rem 1.5rem 2rem 1.5rem;
         text-align: left;
         box-shadow: none;
+        /* Habilita un scroll suave interno si el texto es muy largo */
+        max-height: none; 
+        overflow-y: visible;
     }
     
     .modal-separador { margin: 0 0 1rem 0; }
     .modal-marca-agua { display: none; }
     
-    /* Botón de cerrar (X) flotando exactamente sobre la esquina superior derecha de la imagen */
+    /* Botón de cerrar fijo o flotante bien visible en la esquina superior de la pantalla del modal */
     .btn-cerrar-modal {
-        position: absolute;
+        position: fixed; /* Fijo para que siempre acompañe al usuario aunque haga scroll */
         top: 25px;
         right: 25px;
-        width: 40px;
-        height: 40px;
-        background: rgba(44, 62, 45, 0.85); /* Fondo oscuro semitransparente elegante */
-        backdrop-filter: blur(4px);
+        width: 44px;
+        height: 44px;
+        background: #2C3E2D;
         color: #ffffff;
-        border: 2px solid rgba(255, 255, 255, 0.8);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        z-index: 50;
-        font-size: 1.1rem;
+        border: 2px solid #ffffff;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        z-index: 1000;
     }
 }
