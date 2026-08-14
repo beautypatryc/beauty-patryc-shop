@@ -35,7 +35,7 @@ window.abrirDetalleProducto = (id) => {
             
             <p><strong>Fórmula:</strong> ${prod.ingredientes}</p>
             <p><strong>Aplicación:</strong> ${prod.aplicacion}</p>
-            <p><strong>Duración:</strong> ${prod.duracion}</p>
+            <p><strong>Rendimiento:</strong> ${prod.duracion}</p>
             
             <button class="btn-agregar-modal" onclick="agregarAlCarrito(${prod.id}); cerrarModal();">
                 Agregar al Carrito - ${formatoMoneda.format(prod.precio)}
@@ -122,12 +122,22 @@ const inputNombre = document.getElementById('cliente-nombre');
 const inputDireccion = document.getElementById('cliente-direccion');
 const btnPagar = document.getElementById('btn-pagar');
 
+// Validar que el nombre solo contenga letras y espacios en tiempo real
+inputNombre.addEventListener('input', (e) => {
+    let valorLimpio = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
+    e.target.value = valorLimpio;
+    validarFormulario();
+});
+
 function validarFormulario() {
-    const esValido = inputNombre.value.trim() !== '' && inputDireccion.value.trim() !== '' && carrito.length > 0;
+    const nombreTrim = inputNombre.value.trim();
+    const nombreCoherente = nombreTrim.length >= 3; // Mínimo 3 letras para ser válido
+    const direccionValida = inputDireccion.value.trim() !== '';
+    
+    const esValido = nombreCoherente && direccionValida && carrito.length > 0;
     btnPagar.disabled = !esValido;
 }
 
-inputNombre.addEventListener('input', validarFormulario);
 inputDireccion.addEventListener('input', validarFormulario);
 
 window.enviarWhatsApp = () => {
