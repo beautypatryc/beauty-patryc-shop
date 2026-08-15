@@ -23,15 +23,12 @@
 }
 
 :root {
-    /* Paleta Botánica y Minimalista */
     --color-primario: #5C8D89; 
     --color-secundario: #74B49B; 
     --color-fondo: #F4F9F4; 
     --color-fondo-tarjeta: #FFFFFF; 
     --color-texto: #2C3E2D; 
     --color-texto-suave: #557056; 
-    
-    /* Tipografías Locales Implementadas */
     --fuente-principal: 'Montserrat', sans-serif;
     --fuente-marca: 'Great Vibes', cursive; 
 }
@@ -437,33 +434,40 @@ body {
     letter-spacing: 2px;
 }
 
-/* Ajuste Responsivo para Smartphones - Modal optimizado con botón visible */
+/* =========================================
+   AJUSTE RESPONSIVO MÓVIL (SCROLL LIBRE Y BOTÓN VISIBLE)
+   ========================================= */
 @media (max-width: 768px) {
+    .modal-oculto {
+        align-items: flex-start; /* Permite que el modal crezca desde arriba si es largo */
+        overflow-y: auto;
+        padding: 20px 0;
+    }
+
     .modal-contenido { 
-        justify-content: center; 
-        width: 95%; 
-        max-height: 95vh; 
-        padding: 0.5rem 0;
+        width: 92%; 
+        max-height: none; 
+        padding: 0;
+        margin: auto;
     }
     
     .modal-cuerpo { 
         flex-direction: column; 
-        max-height: 90vh;
-        overflow-y: auto; /* Permite hacer scroll en todo el contenido fluidamente */
+        max-height: none; /* Quitamos límites estrictos para que fluya de forma natural con scroll */
+        overflow-y: visible; 
         background: var(--color-fondo-tarjeta);
         border-radius: 16px;
-        padding-bottom: 2rem; /* Espacio extra al final para que el botón respire */
+        padding-bottom: 2rem;
         position: relative; 
     }
     
     .modal-imagen-contenedor {
         position: relative;
         width: 100%;
-        padding: 16px 16px 4px 16px; 
+        padding: 18px 18px 4px 18px; 
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-shrink: 0;
     }
 
     .modal-imagen-flotante {
@@ -491,20 +495,20 @@ body {
     .modal-separador { margin: 0 0 1rem 0; }
     .modal-marca-agua { display: none; }
     
-    /* Aseguramos que el botón de agregar destaque y no quede cortado */
     .btn-agregar-modal {
         margin-top: 1.5rem;
-        margin-bottom: 1rem; /* Margen inferior para que despegue del borde de la tarjeta */
+        margin-bottom: 0.5rem;
         padding: 1.1rem 1rem;
         width: 100%;
+        display: block;
         position: relative;
         z-index: 10;
     }
     
     .btn-cerrar-modal {
         position: absolute;
-        top: 26px;
-        right: 26px;
+        top: 28px;
+        right: 28px;
         width: 38px;
         height: 38px;
         background: rgba(255, 255, 255, 0.95);
