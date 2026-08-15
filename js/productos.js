@@ -2,7 +2,7 @@
 export const productos = [
     { 
         id: 1, 
-        nombre: "Kit Romeo", 
+        nombre: "Kit Romero", 
         precio: 55000, 
         img: "assets/Kit.png",
         ingredientes: "Shampoo de Romero para cabello oscuro, Acondicionador y Tratamiento Capilar(Crema de Peinar).",
