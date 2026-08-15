@@ -1,3 +1,6 @@
+/* =========================================
+   IMPORTACIÓN DE FUENTES LOCALES
+   ========================================= */
 @font-face {
     font-family: 'Great Vibes';
     src: url('../fonts/GreatVibes-Regular.ttf') format('truetype');
@@ -326,7 +329,6 @@ body {
     box-shadow: 0 25px 50px rgba(44, 62, 45, 0.15), 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* Imagen completa optimizada (contain) */
 .modal-imagen-flotante {
     position: absolute;
     left: 0;
@@ -397,31 +399,28 @@ body {
     box-shadow: 0 8px 20px rgba(92, 141, 137, 0.3);
 }
 
-/* Botón de cerrar optimizado y visible en PC y móviles */
+/* Botón de cerrar PC */
 .btn-cerrar-modal {
     position: absolute;
-    top: 20px;
+    top: 15px;
     right: 20px;
-    background: #ffffff;
+    background: rgba(92, 141, 137, 0.12);
     border-radius: 50%;
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #e0e0e0;
-    font-size: 1.3rem;
-    color: #2C3E2D;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--color-primario);
     cursor: pointer;
-    z-index: 999;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 50;
     transition: all 0.2s ease;
 }
 
 .btn-cerrar-modal:hover { 
-    background: #ffebee;
-    color: #d32f2f; 
-    border-color: #d32f2f;
+    background: rgba(92, 141, 137, 0.25);
     transform: scale(1.05);
 }
 
@@ -438,63 +437,79 @@ body {
     letter-spacing: 2px;
 }
 
-/* Ajuste Responsivo para Smartphones - Modal con Scrolling Interno */
+/* Ajuste Responsivo para Smartphones - Modal (Imagen grande con márgenes y X flotante limpia) */
 @media (max-width: 768px) {
     .modal-contenido { 
         justify-content: center; 
         width: 95%; 
-        max-height: 90vh; /* Limita la altura total a la pantalla del móvil */
+        max-height: 92vh; 
         padding: 1rem 0;
     }
     
     .modal-cuerpo { 
         flex-direction: column; 
-        max-height: 85vh;
-        overflow-y: auto; /* Permite hacer scroll en todo el cuerpo si es necesario */
+        max-height: 88vh;
+        overflow-y: auto; 
         background: var(--color-fondo-tarjeta);
-        border-radius: 15px;
-        padding-bottom: 1rem;
+        border-radius: 16px;
+        padding-bottom: 1.5rem;
+        position: relative; 
     }
     
+    .modal-imagen-contenedor {
+        position: relative;
+        width: 100%;
+        padding: 18px 18px 4px 18px; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .modal-imagen-flotante {
         position: relative;
         top: auto;
         left: auto;
         transform: none;
         width: 100%;
-        max-height: 220px; /* Altura controlada para que no monopolice la pantalla */
-        margin: 0 auto; 
+        max-width: 340px; 
+        max-height: 310px; 
         object-fit: contain;
-        box-shadow: none;
-        border-radius: 12px 12px 0 0;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        border-radius: 12px;
         display: block;
         background-color: #f9f9f9;
     }
     
     .modal-info-caja {
         width: 100%;
-        padding: 1.5rem 1.5rem 2rem 1.5rem;
+        padding: 1rem 1.5rem 1rem 1.5rem;
         text-align: left;
         box-shadow: none;
-        /* Habilita un scroll suave interno si el texto es muy largo */
-        max-height: none; 
-        overflow-y: visible;
     }
     
     .modal-separador { margin: 0 0 1rem 0; }
     .modal-marca-agua { display: none; }
     
-    /* Botón de cerrar fijo o flotante bien visible en la esquina superior de la pantalla del modal */
     .btn-cerrar-modal {
-        position: fixed; /* Fijo para que siempre acompañe al usuario aunque haga scroll */
-        top: 25px;
-        right: 25px;
-        width: 44px;
-        height: 44px;
-        background: #2C3E2D;
-        color: #ffffff;
-        border: 2px solid #ffffff;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-        z-index: 1000;
+        position: absolute;
+        top: 28px;
+        right: 28px;
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--color-primario);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        z-index: 50;
+        font-size: 1.1rem;
+        transition: transform 0.2s ease;
+    }
+
+    .btn-cerrar-modal:active {
+        transform: scale(0.92);
     }
 }
