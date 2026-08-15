@@ -1,4 +1,3 @@
-// js/app.js
 import { productos } from './productos.js';
 
 let carrito = [];
@@ -25,9 +24,11 @@ window.abrirDetalleProducto = (id) => {
     if (!prod) return;
 
     cuerpoModal.innerHTML = `
-        <button class="btn-cerrar-modal" onclick="cerrarModal()">✖</button>
         <div class="modal-cuerpo">
-            <img src="${prod.img}" alt="${prod.nombre}" class="modal-imagen-flotante">
+            <div class="modal-imagen-contenedor">
+                <button class="btn-cerrar-modal" onclick="cerrarModal()">✖</button>
+                <img src="${prod.img}" alt="${prod.nombre}" class="modal-imagen-flotante">
+            </div>
             <div class="modal-info-caja">
                 <div class="modal-categoria">Cuidado Capilar</div>
                 <h2>${prod.nombre}</h2>
