@@ -442,27 +442,28 @@ body {
     .modal-contenido { 
         justify-content: center; 
         width: 95%; 
-        max-height: 92vh; 
-        padding: 1rem 0;
+        max-height: 95vh; 
+        padding: 0.5rem 0;
     }
     
     .modal-cuerpo { 
         flex-direction: column; 
-        max-height: 88vh;
-        overflow-y: auto; 
+        max-height: 90vh;
+        overflow-y: auto; /* Permite hacer scroll en todo el contenido fluidamente */
         background: var(--color-fondo-tarjeta);
         border-radius: 16px;
-        padding-bottom: 1.5rem;
+        padding-bottom: 2rem; /* Espacio extra al final para que el botón respire */
         position: relative; 
     }
     
     .modal-imagen-contenedor {
         position: relative;
         width: 100%;
-        padding: 18px 18px 4px 18px; 
+        padding: 16px 16px 4px 16px; 
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-shrink: 0;
     }
 
     .modal-imagen-flotante {
@@ -471,10 +472,10 @@ body {
         left: auto;
         transform: none;
         width: 100%;
-        max-width: 340px; 
-        max-height: 310px; 
+        max-width: 320px; 
+        max-height: 280px; 
         object-fit: contain;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         border-radius: 12px;
         display: block;
         background-color: #f9f9f9;
@@ -482,7 +483,7 @@ body {
     
     .modal-info-caja {
         width: 100%;
-        padding: 1rem 1.5rem 1rem 1.5rem;
+        padding: 1rem 1.5rem 1.5rem 1.5rem;
         text-align: left;
         box-shadow: none;
     }
@@ -490,10 +491,20 @@ body {
     .modal-separador { margin: 0 0 1rem 0; }
     .modal-marca-agua { display: none; }
     
+    /* Aseguramos que el botón de agregar destaque y no quede cortado */
+    .btn-agregar-modal {
+        margin-top: 1.5rem;
+        margin-bottom: 1rem; /* Margen inferior para que despegue del borde de la tarjeta */
+        padding: 1.1rem 1rem;
+        width: 100%;
+        position: relative;
+        z-index: 10;
+    }
+    
     .btn-cerrar-modal {
         position: absolute;
-        top: 28px;
-        right: 28px;
+        top: 26px;
+        right: 26px;
         width: 38px;
         height: 38px;
         background: rgba(255, 255, 255, 0.95);
@@ -506,10 +517,5 @@ body {
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         z-index: 50;
         font-size: 1.1rem;
-        transition: transform 0.2s ease;
-    }
-
-    .btn-cerrar-modal:active {
-        transform: scale(0.92);
     }
 }
