@@ -437,7 +437,7 @@ body {
     letter-spacing: 2px;
 }
 
-/* Ajuste Responsivo para Smartphones - Modal (Imagen grande con márgenes y X flotante limpia) */
+/* Ajuste Responsivo para Smartphones - Modal optimizado con botón visible */
 @media (max-width: 768px) {
     .modal-contenido { 
         justify-content: center; 
