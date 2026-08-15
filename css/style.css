@@ -435,35 +435,38 @@ body {
 }
 
 /* =========================================
-   AJUSTE RESPONSIVO MÓVIL (DEFINITIVO PARA BOTÓN Y IMAGEN)
+   AJUSTE RESPONSIVO MÓVIL (SCROLL FORZADO Y BOTÓN VISIBLE)
    ========================================= */
 @media (max-width: 768px) {
     .modal-oculto {
         align-items: center;
-        padding: 10px 0;
+        padding: 10px;
     }
 
     .modal-contenido { 
-        width: 95%; 
-        max-height: 94vh; /* Controla que la ventana modal no rebase la pantalla del celular */
+        width: 100%; 
+        max-width: 450px;
+        height: 88vh; /* Altura estricta para forzar el contenedor a tener límite y activar el scroll */
         padding: 0;
         margin: auto;
     }
     
     .modal-cuerpo { 
         flex-direction: column; 
-        max-height: 92vh; /* Altura máxima para forzar el scroll interno dentro de la tarjeta */
-        overflow-y: auto;  /* El scroll ocurre aquí dentro, manteniendo el botón al alcance */
+        height: 100%; /* Ocupa todo el alto del modal y activa el desplazamiento interno */
+        max-height: 88vh;
+        overflow-y: scroll !important; /* Fuerza la barra y la capacidad de scroll vertical */
+        -webkit-overflow-scrolling: touch; /* Scroll suave nativo en celulares */
         background: var(--color-fondo-tarjeta);
         border-radius: 16px;
-        padding-bottom: 1.5rem;
+        padding-bottom: 2.5rem; /* Espacio generoso para que el botón respire al final */
         position: relative; 
     }
     
     .modal-imagen-contenedor {
         position: relative;
         width: 100%;
-        padding: 16px 16px 0 16px; 
+        padding: 18px 18px 0 18px; 
         display: flex;
         justify-content: center;
         align-items: center;
@@ -476,8 +479,8 @@ body {
         left: auto;
         transform: none;
         width: 100%;
-        max-width: 310px; /* Tamaño excelente para que no ocupe toda la pantalla */
-        max-height: 260px; /* Altura controlada para dejar espacio al texto y al botón */
+        max-width: 300px; 
+        max-height: 250px; 
         object-fit: contain;
         box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         border-radius: 12px;
@@ -487,7 +490,7 @@ body {
     
     .modal-info-caja {
         width: 100%;
-        padding: 1rem 1.5rem 0.5rem 1.5rem;
+        padding: 1rem 1.5rem 1.5rem 1.5rem;
         text-align: left;
         box-shadow: none;
     }
@@ -495,12 +498,12 @@ body {
     .modal-separador { margin: 0 0 1rem 0; }
     .modal-marca-agua { display: none; }
     
-    /* Botón de agregar al carrito visible al final del scroll de la tarjeta */
+    /* Botón de agregar al carrito garantizado al final del scroll */
     .btn-agregar-modal {
-        margin-top: 1.2rem;
-        margin-bottom: 0.5rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
         padding: 1.1rem 1rem;
-        width: calc(100% - 3rem); /* Respeta los márgenes laterales de la caja */
+        width: calc(100% - 3rem);
         margin-left: 1.5rem;
         margin-right: 1.5rem;
         display: block;
@@ -508,11 +511,11 @@ body {
         z-index: 10;
     }
     
-    /* Botón X flotando perfectamente sobre la esquina superior de la foto */
+    /* Botón X flotando perfectamente sobre la esquina de la foto */
     .btn-cerrar-modal {
         position: absolute;
-        top: 26px;
-        right: 26px;
+        top: 28px;
+        right: 28px;
         width: 38px;
         height: 38px;
         background: rgba(255, 255, 255, 0.95);
