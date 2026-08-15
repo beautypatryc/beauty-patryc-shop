@@ -435,39 +435,42 @@ body {
 }
 
 /* =========================================
-   AJUSTE RESPONSIVO MÓVIL (SCROLL INTERNO EN TEXTO Y BOTÓN VISIBLE)
+   AJUSTE RESPONSIVO MÓVIL (SCROLL GLOBAL Y FLUIDO)
    ========================================= */
 @media (max-width: 768px) {
     .modal-oculto {
         align-items: center;
-        padding: 10px;
+        padding: 10px 0;
     }
 
     .modal-contenido { 
         width: 95%; 
-        max-height: 90vh;
+        max-height: 92vh; 
         padding: 0;
         margin: auto;
+        display: flex;
     }
     
     .modal-cuerpo { 
         flex-direction: column; 
-        max-height: 88vh;
-        overflow: hidden; /* Evita scroll general, la tarjeta se mantiene fija y limpia */
+        width: 100%;
+        max-height: 92vh;
+        overflow-y: auto !important; /* Habilita el desplazamiento en toda la tarjeta modal */
+        -webkit-overflow-scrolling: touch;
         background: var(--color-fondo-tarjeta);
         border-radius: 16px;
+        padding-bottom: 2.5rem; /* Espacio inferior generoso para que el botón respire y se vea completo */
         position: relative; 
-        display: flex;
+        display: block;
     }
     
     .modal-imagen-contenedor {
         position: relative;
         width: 100%;
-        padding: 16px 16px 0 16px; 
+        padding: 18px 18px 0 18px; 
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-shrink: 0; /* La foto no se deforma ni se oculta */
     }
 
     .modal-imagen-flotante {
@@ -485,34 +488,35 @@ body {
         background-color: #f9f9f9;
     }
     
-    /* Caja de texto con su propio scroll interno, permitiendo ver el botón al deslizar */
     .modal-info-caja {
         width: 100%;
-        padding: 1rem 1.5rem 1.5rem 1.5rem;
+        padding: 1rem 1.5rem 0.5rem 1.5rem;
         text-align: left;
         box-shadow: none;
-        overflow-y: auto !important; /* Activa el desplazamiento SOLO en la descripción y el botón */
-        -webkit-overflow-scrolling: touch;
-        flex-grow: 1;
+        overflow: visible; /* Deja que el contenido fluya libremente hacia abajo */
     }
     
     .modal-separador { margin: 0 0 1rem 0; }
     .modal-marca-agua { display: none; }
     
+    /* Botón de agregar al carrito garantizado al final del flujo */
     .btn-agregar-modal {
         margin-top: 1.5rem;
         margin-bottom: 1rem;
         padding: 1.1rem 1rem;
-        width: 100%;
+        width: calc(100% - 3rem);
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
         display: block;
         position: relative;
         z-index: 10;
     }
     
+    /* Botón X flotando perfectamente sobre la esquina superior de la foto */
     .btn-cerrar-modal {
         position: absolute;
-        top: 26px;
-        right: 26px;
+        top: 28px;
+        right: 28px;
         width: 38px;
         height: 38px;
         background: rgba(255, 255, 255, 0.95);
